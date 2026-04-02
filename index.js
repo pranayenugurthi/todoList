@@ -42,8 +42,7 @@ addButton.addEventListener("click",()=>{
 });
 function renderList(){
     for(let todo of todoList){
-        addTodoItem(todo);
-        
+        addTodoItem(todo);  
     }
 }
 function addTodoItem(todo){
@@ -76,6 +75,12 @@ function addTodoItem(todo){
     deleteButton.addEventListener("click",()=>{
         listItem.remove();
         todoList=todoList.filter(t=>t.id!==todo.id);
+        if(!todoList.length){
+        let listItem=document.createElement("li");
+        listItem.classList.add("list-item");
+        listItem.textContent="Add new task";
+        listElement.appendChild(listItem);
+    }
     });
     listItem.appendChild(deleteButton);
 }
